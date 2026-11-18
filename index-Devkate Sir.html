@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#C2255C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23C2255C'/%3E%3Ctext x='32' y='43' font-family='Arial' font-size='30' font-weight='700' text-anchor='middle' fill='white'%3ECh%3C/text%3E%3C/svg%3E">
+<title>Devkatte Sir Chemistry</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="11th and 12th Chemistry video lessons by Devkatte Pandurang Vitthalrao, M.Sc. (Chem) B.Ed. Topic-wise playlists in English, Hindi and Marathi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: glass nav, full-width molecule hero with a facts card, topic tiles, student + lab-drawing feature band, about, contact. */
+:root {
+  --bg: #F7F9FF;
+  --surface: #FFFFFF;
+  --tile: #EEF2FF;
+  --ink: #0B1B3A;
+  --muted: #52607D;
+  --line: #E1E7F5;
+  --accent: #2F5BFF;
+  --accent-deep: #1233B8;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E8EDFF;
+  --warm: #FF7A1A;
+  --warm-ink: #0B1B3A;
+  --warm-soft: #FFF0E3;
+  --warm-text: #B14A00;
+  --shadow: 0 14px 34px -16px rgba(18, 51, 184, 0.35);
+  --font-display: "Outfit", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Inter", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+/* The site stays bright on purpose, even when the phone is in dark mode. */
+:root[data-theme="dark"] { color-scheme: light; }
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px));
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.wrap { max-width: 1040px; margin-inline: auto; padding-bottom: 56px; display: flex; flex-direction: column; gap: 64px; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--warm); outline-offset: 2px; }
+section[id] { scroll-margin-top: 80px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+.notice { background: var(--warm-soft); color: var(--warm-text); border-radius: 12px; padding: 10px 14px; font-size: 13px; font-weight: 500; }
+.notice[hidden] { display: none; }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 11; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 20px; padding-block: 12px; }
+.nav-in { width: 100%; max-width: 1040px; margin-inline: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 20px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 18px; text-decoration: none; letter-spacing: -0.01em; }
+.brand b { color: var(--accent); font-weight: 700; }
+.logo { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--warm)); color: #fff; display: grid; place-items: center; font-size: 15px; font-weight: 800; }
+.links { display: flex; gap: 4px 6px; flex-wrap: wrap; }
+.links a { text-decoration: none; font-size: 14px; font-weight: 600; color: var(--muted); padding: 7px 14px; border-radius: 999px; }
+.links a:hover { color: var(--accent); background: var(--accent-soft); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: 15px; text-decoration: none; padding: 12px 22px; border-radius: 999px; border: 2px solid var(--accent); background: var(--accent); color: var(--accent-ink); cursor: pointer; }
+.btn:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn.ghost:hover { background: var(--accent-soft); }
+.btn.warm { background: var(--warm); border-color: var(--warm); color: var(--warm-ink); }
+.btn.warm:hover { background: #FF8F3F; border-color: #FF8F3F; }
+.btn.glass { background: rgba(255, 255, 255, 0.14); border-color: rgba(255, 255, 255, 0.7); color: #fff; }
+.btn.glass:hover { background: rgba(255, 255, 255, 0.28); }
+.btn[hidden] { display: none; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; border-radius: 28px; color: #fff; padding: clamp(28px, 5vw, 56px); min-height: 460px; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px 40px; align-items: end;
+  background: linear-gradient(100deg, rgba(10, 36, 150, 0.97) 0%, rgba(24, 66, 224, 0.9) 40%, rgba(47, 91, 255, 0.35) 72%, rgba(47, 91, 255, 0) 100%), url("images/molecules.jpg") center / cover no-repeat, #1233B8; }
+.hero-copy { align-self: center; min-width: 0; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.hero .eyebrow { color: #FFD3B0; }
+h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(36px, 7vw, 62px); line-height: 1.02; margin: 10px 0 16px; text-wrap: balance; letter-spacing: -0.02em; }
+.lede { max-width: 52ch; margin: 0 0 26px; font-size: 17px; color: rgba(255, 255, 255, 0.93); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.facts { margin: 0; background: rgba(255, 255, 255, 0.94); color: var(--ink); border-radius: 20px; padding: 8px 20px; box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.45); align-self: end; }
+.facts div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.facts div:last-child { border-bottom: 0; }
+.facts dt { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: 0; font-weight: 600; text-align: right; }
+
+.h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 4.5vw, 38px); line-height: 1.12; margin: 6px 0 8px; letter-spacing: -0.015em; text-wrap: balance; }
+.sec-sub { color: var(--muted); margin: 0 0 22px; max-width: 62ch; font-size: 16px; }
+.label { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+/* Class tabs and topic tiles */
+.tabs { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 5px; border-radius: 999px; background: var(--tile); margin-bottom: 18px; }
+.tab { font: inherit; font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--muted); background: transparent; border: 0; border-radius: 999px; padding: 10px 24px; cursor: pointer; }
+.tab:hover { color: var(--accent); }
+.tab[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 16px -8px rgba(18, 51, 184, 0.7); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; margin-bottom: 22px; }
+.tile { text-align: left; font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 16px 16px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; min-width: 0; box-shadow: 0 2px 6px rgba(18, 51, 184, 0.05); }
+.tile:hover { border-color: var(--accent); box-shadow: var(--shadow); transform: translateY(-2px); }
+.tile[aria-pressed="true"] { background: linear-gradient(135deg, var(--accent), var(--accent-deep)); border-color: transparent; color: #fff; box-shadow: var(--shadow); }
+.tile .no { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-text); }
+.tile[aria-pressed="true"] .no { color: #FFD3B0; }
+.tile .name { font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.22; overflow-wrap: anywhere; }
+.tile .count { font-size: 12px; opacity: 0.8; margin-top: auto; padding-top: 8px; }
+
+/* Playlist panel */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); scroll-margin-top: 80px; }
+.panel-head { padding: 24px; display: flex; flex-wrap: wrap; gap: 14px 24px; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, var(--accent-soft), var(--surface)); }
+.panel-head .info { min-width: 0; flex: 1 1 320px; }
+.panel h3 { font-family: var(--font-display); font-weight: 700; font-size: clamp(22px, 4vw, 32px); line-height: 1.12; margin: 4px 0 8px; text-wrap: balance; letter-spacing: -0.01em; }
+.desc { color: var(--muted); margin: 0 0 8px; max-width: 62ch; }
+.meta { font-size: 13px; font-weight: 600; color: var(--accent-deep); }
+.tools { padding: 14px 24px; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; border-bottom: 1px solid var(--line); }
+.search { flex: 1 1 200px; min-width: 0; font: inherit; color: var(--ink); background: var(--tile); border: 1px solid transparent; border-radius: 999px; padding: 10px 18px; }
+.search:focus { border-color: var(--accent); background: var(--surface); outline: none; }
+.search::placeholder { color: var(--muted); }
+.pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.pill { font: inherit; font-size: 13px; font-weight: 600; color: var(--muted); background: var(--tile); border: 1px solid transparent; border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+.pill:hover { color: var(--accent); }
+.pill[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.list { list-style: none; margin: 0; padding: 0; }
+.row { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 4px 16px; align-items: center; padding: 16px 24px; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; }
+.list li:last-child .row { border-bottom: 0; }
+a.row:hover { background: var(--accent-soft); }
+.row .n { width: 36px; height: 36px; border-radius: 12px; background: var(--accent-soft); color: var(--accent-deep); font-family: var(--font-display); font-weight: 700; font-size: 15px; display: grid; place-items: center; }
+a.row:hover .n { background: var(--accent); color: #fff; }
+.row .t { min-width: 0; }
+.row .title { font-weight: 600; font-size: 16px; overflow-wrap: anywhere; }
+.row .sub { font-size: 13px; color: var(--muted); margin-top: 1px; }
+.row .side { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 6px 8px; }
+.row .dur { font-size: 13px; font-weight: 600; color: var(--muted); min-width: 48px; text-align: right; font-variant-numeric: tabular-nums; }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-deep); white-space: nowrap; }
+.tag.exp { background: var(--warm-soft); color: var(--warm-text); }
+.pending { font-size: 12px; color: var(--muted); font-style: italic; }
+.empty { padding: 28px 24px; color: var(--muted); }
+
+/* Feature band: student photo beside copy set over the lab drawing */
+.feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 0; border-radius: 28px; overflow: hidden; background: var(--surface); box-shadow: var(--shadow); border: 1px solid var(--line); }
+.feature-photo { min-height: 320px; position: relative; }
+.feature-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; display: block; }
+.feature-copy { padding: clamp(24px, 4vw, 48px); background: linear-gradient(rgba(255, 252, 246, 0.9), rgba(255, 252, 246, 0.9)), url("images/lab.webp") center / cover no-repeat, #FFFCF6; min-width: 0; }
+.feature-copy .eyebrow { color: var(--warm-text); }
+.feature-copy p { margin: 0 0 14px; color: #33415C; max-width: 52ch; font-size: 16px; }
+.ticks { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.ticks li { position: relative; padding-left: 32px; font-weight: 600; }
+.ticks li::before { content: ""; position: absolute; left: 0; top: 2px; width: 20px; height: 20px; border-radius: 50%; background: var(--warm); }
+.ticks li::after { content: ""; position: absolute; left: 7px; top: 6px; width: 5px; height: 9px; border: solid var(--warm-ink); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+
+/* Latest videos */
+.vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.vcard { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; text-decoration: none; display: flex; flex-direction: column; min-width: 0; box-shadow: 0 2px 6px rgba(18, 51, 184, 0.05); }
+.vcard:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.vcard img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--tile); }
+.vbody { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 4px; }
+.vtitle { font-weight: 600; font-size: 15px; line-height: 1.35; overflow-wrap: anywhere; }
+.vmeta { font-size: 12px; font-weight: 600; color: var(--muted); }
+
+/* About */
+.about { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px 36px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: clamp(20px, 4vw, 36px); box-shadow: var(--shadow); }
+.photo { width: 200px; max-width: 100%; aspect-ratio: 1; border-radius: 24px; background: linear-gradient(135deg, var(--accent), var(--warm)); display: grid; place-items: center; overflow: hidden; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo span { font-family: var(--font-display); font-weight: 800; font-size: 60px; color: #fff; letter-spacing: -0.02em; }
+.about h3 { font-family: var(--font-display); font-size: clamp(24px, 4vw, 30px); line-height: 1.15; margin: 0 0 6px; letter-spacing: -0.01em; }
+.cred { font-size: 14px; font-weight: 700; color: var(--accent); margin: 0 0 14px; }
+.about p { margin: 0 0 10px; max-width: 62ch; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.chip { font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-deep); }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; box-shadow: var(--shadow); }
+.card .num { font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: 0.01em; user-select: all; }
+.card .row-btn { display: flex; flex-wrap: wrap; gap: 8px; }
+.card .btn { padding: 9px 18px; font-size: 14px; }
+.card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+.foot { border-top: 1px solid var(--line); padding-top: 20px; color: var(--muted); font-size: 13px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; }
+
+@media (max-width: 800px) {
+  .hero { grid-template-columns: minmax(0, 1fr); min-height: 0; border-radius: 22px;
+    background: linear-gradient(180deg, rgba(10, 36, 150, 0.96) 0%, rgba(24, 66, 224, 0.88) 55%, rgba(47, 91, 255, 0.55) 100%), url("images/molecules.jpg") center / cover no-repeat, #1233B8; }
+  .feature { grid-template-columns: minmax(0, 1fr); }
+  .feature-photo { min-height: 0; aspect-ratio: 4 / 3; }
+  .about { grid-template-columns: minmax(0, 1fr); }
+  .photo { width: 120px; border-radius: 20px; }
+  .photo span { font-size: 40px; }
+  .wrap { gap: 48px; }
+}
+@media (max-width: 520px) {
+  .row { grid-template-columns: 36px minmax(0, 1fr); padding: 14px 16px; }
+  .row .side { grid-column: 2; justify-content: flex-start; }
+  .row .dur { text-align: left; min-width: 0; }
+  .panel-head, .tools { padding-inline: 16px; }
+  .tab { padding: 9px 16px; font-size: 14px; }
+  .links a { padding: 6px 10px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tile, .btn, a.row, .pill, .tab, .vcard, .links a { transition: background-color .15s, border-color .15s, color .15s, box-shadow .2s, transform .2s; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="nav" aria-label="Main">
+    <div class="nav-in">
+      <a class="brand" href="#home"><span class="logo" aria-hidden="true">Ch</span><span>Devkatte Sir <b>Chemistry</b></span></a>
+      <div class="links">
+        <a href="#topics">Topics</a>
+        <a href="#learn">Why watch</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="notice" id="notice" hidden>Topic and video titles are samples. The real playlists replace them before the site goes live.</div>
+
+  <section class="hero" id="home">
+    <div class="hero-copy">
+      <div class="eyebrow">11th and 12th Chemistry</div>
+      <h1>Chemistry, one topic at a time.</h1>
+      <p class="lede">Video lessons and experiments arranged chapter by chapter. Start at the first video of a topic and watch straight through, in English, Hindi or Marathi.</p>
+      <div class="actions">
+        <a class="btn warm" id="hero-channel" href="#" target="_blank" rel="noopener">Watch on YouTube</a>
+        <a class="btn glass" href="#topics">Browse topics</a>
+      </div>
+    </div>
+    <dl class="facts">
+      <div><dt>Classes</dt><dd>11th, 12th</dd></div>
+      <div><dt>Subject</dt><dd>Chemistry</dd></div>
+      <div><dt>Languages</dt><dd>English, Hindi, Marathi</dd></div>
+      <div><dt>Teacher</dt><dd>M.Sc. (Chem) B.Ed.</dd></div>
+    </dl>
+  </section>
+
+  <section id="latest" aria-labelledby="latest-h" hidden>
+    <h2 class="h2" id="latest-h">New videos</h2>
+    <p class="sec-sub">The newest lessons from the channel. This list updates by itself when a video is uploaded.</p>
+    <div class="vgrid" id="latest-box"></div>
+  </section>
+
+  <section id="topics" aria-labelledby="topics-h">
+    <h2 class="h2" id="topics-h">Topics and playlists</h2>
+    <p class="sec-sub">Choose your class, then a topic. Videos inside each topic are numbered in the order to watch them.</p>
+    <div class="tabs" role="group" aria-label="Class" id="tabs"></div>
+    <div class="tiles" id="tiles"></div>
+    <div class="panel" id="panel" aria-live="polite"></div>
+  </section>
+
+  <section class="feature" id="learn" aria-labelledby="learn-h">
+    <div class="feature-photo"><img src="images/student.webp" alt="A student in safety glasses studying a ball-and-stick molecule model" loading="lazy"></div>
+    <div class="feature-copy">
+      <div class="eyebrow">Learn by seeing</div>
+      <h2 class="h2" id="learn-h">Ideas you can see, not just memorise</h2>
+      <p>Chemistry makes sense when you can picture it. Each lesson explains the idea step by step, and experiments are shown on the bench wherever seeing it is easier than reading about it.</p>
+      <ul class="ticks">
+        <li>Every topic is a playlist, watched in order</li>
+        <li>Theory lessons and experiments marked clearly</li>
+        <li>Choose English, Hindi or Marathi</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="about" aria-labelledby="about-h">
+    <h2 class="h2" id="about-h">About the teacher</h2>
+    <div class="about" id="about-box" style="margin-top:14px"></div>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-h">
+    <h2 class="h2" id="contact-h">Contact</h2>
+    <p class="sec-sub">Questions about a topic or the lessons? Reach out on either number.</p>
+    <div class="contact" id="contact-box"></div>
+  </section>
+
+  <footer class="foot">
+    <span id="foot-left"></span>
+    <span>Videos play on YouTube.</span>
+  </footer>
+</div>
+
+<script>
+/* ============================================================
+   EDIT HERE. Everything the site shows comes from this block.
+   - SAMPLE: set to false when the real playlists are added (hides the notice)
+   - photo: link or data URI of sir's photo ("" shows his initials)
+   - topic: id, cls ("11th" or "12th"), title, about, playlistUrl ("" hides the button)
+   - video: [title, type ("Theory" or "Experiment"), duration "m:ss", language, YouTube url]
+     Leave the url "" until the video is uploaded.
+   Videos and topics appear in the order written here.
+   ============================================================ */
+var SAMPLE = true;
+var SITE = {
+  name: "Devkatte Pandurang Vitthalrao",
+  short: "Devkatte Sir Chemistry",
+  initials: "DP",
+  cred: "M.Sc. (Chem) B.Ed.",
+  photo: "",
+  channelUrl: "https://www.youtube.com/@pandurangdevkatte1439",
+  phones: ["9860100359", "8805094018"]
+};
+function V(t, type, dur, lang, url) { return { title: t, type: type, dur: dur, lang: lang, url: url || "" }; }
+var TOPICS = [
+  { id: "c11-atom", cls: "11th", title: "Structure of Atom", playlistUrl: "",
+    about: "Subatomic particles, atomic models, quantum numbers and electronic configuration.",
+    videos: [ V("Subatomic particles and atomic models", "Theory", "15:20", "Marathi"), V("Quantum numbers and orbitals", "Theory", "18:40", "Marathi"), V("Electronic configuration", "Theory", "16:05", "English") ] },
+  { id: "c11-bond", cls: "11th", title: "Chemical Bonding", playlistUrl: "",
+    about: "Ionic and covalent bonds, Lewis structures and molecular shapes.",
+    videos: [ V("Why atoms bond", "Theory", "12:30", "Hindi"), V("Ionic and covalent bonding", "Theory", "17:10", "Hindi"), V("Conductivity of ionic and covalent compounds", "Experiment", "10:25", "Marathi") ] },
+  { id: "c11-redox", cls: "11th", title: "Redox Reactions", playlistUrl: "",
+    about: "Oxidation numbers, balancing redox equations and common oxidising and reducing agents.",
+    videos: [ V("Oxidation and reduction", "Theory", "13:45", "Marathi"), V("Oxidation number rules", "Theory", "14:20", "English"), V("Balancing redox equations", "Theory", "19:00", "Marathi") ] },
+  { id: "c11-eq", cls: "11th", title: "Chemical Equilibrium", playlistUrl: "",
+    about: "Reversible reactions, equilibrium constant and Le Chatelier's principle.",
+    videos: [ V("Reversible reactions", "Theory", "11:50", "Hindi"), V("Equilibrium constant", "Theory", "16:30", "English"), V("Effect of concentration and temperature", "Experiment", "12:15", "Marathi") ] },
+  { id: "c11-hc", cls: "11th", title: "Hydrocarbons", playlistUrl: "",
+    about: "Alkanes, alkenes and alkynes: naming, preparation and reactions.",
+    videos: [ V("Alkanes and naming", "Theory", "20:10", "Marathi"), V("Alkenes and alkynes", "Theory", "21:35", "Hindi"), V("Test for unsaturation", "Experiment", "9:40", "English") ] },
+  { id: "c12-sol", cls: "12th", title: "Solutions", playlistUrl: "",
+    about: "Concentration terms, Raoult's law, colligative properties and numericals.",
+    videos: [ V("Types of solutions and concentration", "Theory", "15:00", "Marathi"), V("Raoult's law", "Theory", "17:25", "English"), V("Colligative properties numericals", "Theory", "22:10", "Hindi") ] },
+  { id: "c12-ec", cls: "12th", title: "Electrochemistry", playlistUrl: "",
+    about: "Electrochemical cells, electrode potential, Nernst equation and electrolysis.",
+    videos: [ V("Galvanic cells", "Theory", "16:40", "Marathi"), V("Daniell cell setup", "Experiment", "13:10", "Marathi"), V("Nernst equation", "Theory", "18:55", "English") ] },
+  { id: "c12-kin", cls: "12th", title: "Chemical Kinetics", playlistUrl: "",
+    about: "Rate of reaction, order, rate constant and the Arrhenius equation.",
+    videos: [ V("Rate of reaction", "Theory", "14:30", "Hindi"), V("Order and molecularity", "Theory", "16:15", "Marathi"), V("Effect of concentration on reaction rate", "Experiment", "11:20", "English") ] },
+  { id: "c12-coord", cls: "12th", title: "Coordination Compounds", playlistUrl: "",
+    about: "Ligands, naming, isomerism and bonding in coordination compounds.",
+    videos: [ V("Ligands and coordination number", "Theory", "15:45", "English"), V("Naming coordination compounds", "Theory", "17:00", "Marathi"), V("Isomerism", "Theory", "19:20", "Hindi") ] },
+  { id: "c12-ald", cls: "12th", title: "Aldehydes, Ketones and Carboxylic Acids", playlistUrl: "",
+    about: "Preparation, properties and tests for carbonyl compounds and carboxylic acids.",
+    videos: [ V("Aldehydes and ketones: preparation", "Theory", "18:25", "Marathi"), V("Tests for aldehydes and ketones", "Experiment", "10:50", "Hindi"), V("Carboxylic acids", "Theory", "17:40", "English") ] }
+];
+var CLASSES = ["11th", "12th"];
+/* Live mode: on the real website the page asks /api/playlists for the channel's playlists.
+   If that is not available, the sample topics above stay on screen. */
+var API_URL = "/api/playlists";
+var LATEST = [];
+/* ============================================================ */
+
+(function () {
+  var state = { cls: "11th", topic: null, lang: "All", type: "All", q: "" };
+
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function pad(n) { return n < 10 ? "0" + n : String(n); }
+  function plural(n, w) { return n + " " + w + (n === 1 ? "" : "s"); }
+  function secs(d) { var p = String(d || "0:00").split(":").map(Number); return p.length === 3 ? p[0] * 3600 + p[1] * 60 + p[2] : (p[0] || 0) * 60 + (p[1] || 0); }
+  function total(vs) { var s = vs.reduce(function (a, v) { return a + secs(v.dur); }, 0), h = Math.floor(s / 3600), m = Math.round((s % 3600) / 60); return h ? h + " h " + m + " min" : m + " min"; }
+  function inClass(c) { return TOPICS.filter(function (t) { return t.cls === c; }); }
+  function topicById(id) { for (var i = 0; i < TOPICS.length; i++) if (TOPICS[i].id === id) return TOPICS[i]; return null; }
+  function fmtPhone(n) { return n.slice(0, 5) + " " + n.slice(5); }
+
+  function renderStatic() {
+    document.getElementById("notice").hidden = !SAMPLE;
+    var hc = document.getElementById("hero-channel");
+    if (SITE.channelUrl) hc.href = SITE.channelUrl; else hc.hidden = true;
+
+    var ab = document.getElementById("about-box"); ab.textContent = "";
+    var ph = el("div", "photo");
+    if (SITE.photo) { var im = el("img"); im.src = SITE.photo; im.alt = SITE.name; ph.appendChild(im); }
+    else ph.appendChild(el("span", null, SITE.initials));
+    ab.appendChild(ph);
+    var tx = el("div");
+    tx.appendChild(el("h3", null, SITE.name));
+    tx.appendChild(el("p", "cred", SITE.cred));
+    tx.appendChild(el("p", null, SITE.name + " is a chemistry teacher who explains the 11th and 12th Chemistry syllabus on YouTube, topic by topic, with experiments shown wherever a concept is easier to see than to read."));
+    tx.appendChild(el("p", null, "Lessons are taught in English, Hindi and Marathi, so students can learn in the language they are most comfortable with."));
+    var chips = el("div", "chips");
+    ["11th Chemistry", "12th Chemistry", "English", "Hindi", "Marathi"].forEach(function (c) { chips.appendChild(el("span", "chip", c)); });
+    tx.appendChild(chips);
+    ab.appendChild(tx);
+
+    var cb = document.getElementById("contact-box"); cb.textContent = "";
+    SITE.phones.forEach(function (p) {
+      var c = el("div", "card");
+      c.appendChild(el("div", "label", "Phone and WhatsApp"));
+      c.appendChild(el("div", "num", fmtPhone(p)));
+      var rb = el("div", "row-btn");
+      var wa = el("a", "btn", "WhatsApp"); wa.href = "https://wa.me/91" + p; wa.target = "_blank"; wa.rel = "noopener"; rb.appendChild(wa);
+      var cp = el("button", "btn ghost", "Copy number"); cp.type = "button";
+      cp.addEventListener("click", function () {
+        function done(ok) { cp.textContent = ok ? "Copied" : "Select the number"; setTimeout(function () { cp.textContent = "Copy number"; }, 1800); }
+        try { navigator.clipboard.writeText(p).then(function () { done(true); }, function () { done(false); }); } catch (e) { done(false); }
+      });
+      rb.appendChild(cp);
+      c.appendChild(rb);
+      cb.appendChild(c);
+    });
+    if (SITE.channelUrl) {
+      var yc = el("div", "card");
+      yc.appendChild(el("div", "label", "YouTube channel"));
+      yc.appendChild(el("p", null, "New lessons are uploaded to the channel. Subscribe to get them as they come."));
+      var rb2 = el("div", "row-btn");
+      var ya = el("a", "btn", "Open channel"); ya.href = SITE.channelUrl; ya.target = "_blank"; ya.rel = "noopener"; rb2.appendChild(ya);
+      yc.appendChild(rb2);
+      cb.appendChild(yc);
+    }
+    document.getElementById("foot-left").textContent = "© " + new Date().getFullYear() + " " + SITE.name;
+  }
+
+  function renderTabs() {
+    var box = document.getElementById("tabs"); box.textContent = "";
+    CLASSES.forEach(function (c) {
+      var b = el("button", "tab", c === "Other" ? "More playlists" : c + " Chemistry"); b.type = "button";
+      b.setAttribute("aria-pressed", String(c === state.cls));
+      b.addEventListener("click", function () { state.cls = c; state.topic = inClass(c)[0] ? inClass(c)[0].id : null; resetFilters(); renderTabs(); renderTiles(); renderPanel(); });
+      box.appendChild(b);
+    });
+  }
+  function resetFilters() { state.lang = "All"; state.type = "All"; state.q = ""; }
+
+  function renderTiles() {
+    var box = document.getElementById("tiles"); box.textContent = "";
+    inClass(state.cls).forEach(function (t, i) {
+      var b = el("button", "tile"); b.type = "button";
+      b.setAttribute("aria-pressed", String(t.id === state.topic));
+      b.appendChild(el("span", "no", "Topic " + pad(i + 1)));
+      b.appendChild(el("span", "name", t.title));
+      b.appendChild(el("span", "count", plural(t.videos.length, "video")));
+      b.addEventListener("click", function () {
+        state.topic = t.id; resetFilters(); renderTiles(); renderPanel();
+        document.getElementById("panel").scrollIntoView({ block: "start" });
+      });
+      box.appendChild(b);
+    });
+  }
+
+  function pillGroup(label, options, key, onChange) {
+    var wrap = el("div", "pills"); wrap.setAttribute("role", "group"); wrap.setAttribute("aria-label", label);
+    options.forEach(function (o) {
+      var p = el("button", "pill", o); p.type = "button";
+      p.setAttribute("aria-pressed", String(state[key] === o));
+      p.addEventListener("click", function () {
+        state[key] = o;
+        Array.prototype.forEach.call(wrap.children, function (c) { c.setAttribute("aria-pressed", String(c.textContent === o)); });
+        onChange();
+      });
+      wrap.appendChild(p);
+    });
+    return wrap;
+  }
+
+  function renderPanel() {
+    var panel = document.getElementById("panel"); panel.textContent = "";
+    var t = topicById(state.topic);
+    if (!t) { panel.appendChild(el("div", "empty", "Topics for this class will be added soon.")); return; }
+    var idx = inClass(state.cls).indexOf(t);
+
+    var head = el("div", "panel-head");
+    var info = el("div", "info");
+    info.appendChild(el("div", "eyebrow", (state.cls === "Other" ? "More playlists" : state.cls + " Chemistry") + " · Topic " + pad(idx + 1)));
+    info.appendChild(el("h3", null, t.title));
+    if (t.about) info.appendChild(el("p", "desc", t.about));
+    info.appendChild(el("div", "meta", plural(t.videos.length, "video") + " · " + total(t.videos) + " in total"));
+    head.appendChild(info);
+    if (t.playlistUrl) { var a = el("a", "btn", "Open full playlist"); a.href = t.playlistUrl; a.target = "_blank"; a.rel = "noopener"; head.appendChild(a); }
+    panel.appendChild(head);
+
+    var tools = el("div", "tools");
+    var s = el("input", "search"); s.type = "search"; s.id = "video-search"; s.placeholder = "Search this topic"; s.value = state.q;
+    s.setAttribute("aria-label", "Search videos in this topic");
+    s.addEventListener("input", function () { state.q = s.value; renderList(); });
+    tools.appendChild(s);
+    var langs = ["English", "Hindi", "Marathi"].filter(function (l) { return t.videos.some(function (v) { return v.lang === l; }); });
+    if (langs.length) tools.appendChild(pillGroup("Language", ["All"].concat(langs), "lang", renderList));
+    tools.appendChild(pillGroup("Type", ["All", "Theory", "Experiment"], "type", renderList));
+    panel.appendChild(tools);
+
+    var ul = el("ul", "list"); ul.id = "list"; panel.appendChild(ul);
+    renderList();
+  }
+
+  function renderList() {
+    var t = topicById(state.topic); var ul = document.getElementById("list"); ul.textContent = "";
+    var q = state.q.trim().toLowerCase(), shown = 0;
+    t.videos.forEach(function (v, i) {
+      if (state.lang !== "All" && v.lang !== state.lang) return;
+      if (state.type !== "All" && v.type !== state.type) return;
+      if (q && v.title.toLowerCase().indexOf(q) < 0) return;
+      shown++;
+      var li = document.createElement("li");
+      var row = v.url ? el("a", "row") : el("div", "row");
+      if (v.url) { row.href = v.url; row.target = "_blank"; row.rel = "noopener"; }
+      row.appendChild(el("span", "n", pad(i + 1)));
+      var tx = el("div", "t"); tx.appendChild(el("div", "title", v.title));
+      if (!v.url) tx.appendChild(el("div", "pending", "Link coming soon"));
+      else if (v.date) tx.appendChild(el("div", "sub", "Uploaded " + fmtDate(v.date)));
+      row.appendChild(tx);
+      var side = el("div", "side");
+      if (v.lang) side.appendChild(el("span", "tag", v.lang));
+      side.appendChild(el("span", "tag" + (v.type === "Experiment" ? " exp" : ""), v.type));
+      side.appendChild(el("span", "dur", v.dur));
+      row.appendChild(side);
+      li.appendChild(row); ul.appendChild(li);
+    });
+    if (!shown) { var li2 = document.createElement("li"); li2.appendChild(el("div", "empty", "No videos match. Clear the search or choose All.")); ul.appendChild(li2); }
+  }
+
+  function fmtDate(iso) {
+    try { return new Date(iso).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }); } catch (e) { return ""; }
+  }
+
+  function renderLatest() {
+    var sec = document.getElementById("latest"), box = document.getElementById("latest-box");
+    box.textContent = "";
+    if (!LATEST.length) { sec.hidden = true; return; }
+    sec.hidden = false;
+    LATEST.forEach(function (v) {
+      var a = el("a", "vcard"); a.href = v.url; a.target = "_blank"; a.rel = "noopener";
+      if (v.thumb) { var im = el("img"); im.src = v.thumb; im.alt = ""; im.loading = "lazy"; a.appendChild(im); }
+      var b = el("div", "vbody");
+      b.appendChild(el("div", "vtitle", v.title));
+      b.appendChild(el("div", "vmeta", [fmtDate(v.date), v.dur].filter(Boolean).join(" · ")));
+      a.appendChild(b); box.appendChild(a);
+    });
+  }
+
+  function load() {
+    if (!window.fetch) return;
+    fetch(API_URL).then(function (r) { if (!r.ok) throw new Error("no api"); return r.json(); }).then(function (d) {
+      if (!d || !d.playlists || !d.playlists.length) return;
+      TOPICS = d.playlists.map(function (p) { return { id: p.id, cls: p.cls, title: p.topic, about: p.about || "", playlistUrl: p.url, videos: p.videos }; });
+      LATEST = d.latest || [];
+      SAMPLE = false;
+      CLASSES = ["11th", "12th"].concat(TOPICS.some(function (t) { return t.cls === "Other"; }) ? ["Other"] : []);
+      state.cls = inClass("11th").length ? "11th" : (inClass("12th").length ? "12th" : CLASSES[CLASSES.length - 1]);
+      state.topic = inClass(state.cls)[0] ? inClass(state.cls)[0].id : null;
+      resetFilters(); renderStatic(); renderLatest(); renderTabs(); renderTiles(); renderPanel();
+    }).catch(function () { /* keep the sample topics */ });
+  }
+
+  state.topic = inClass(state.cls)[0] ? inClass(state.cls)[0].id : null;
+  renderStatic(); renderTabs(); renderTiles(); renderPanel();
+  load();
+})();
+</script>
+
+</body>
+</html>
